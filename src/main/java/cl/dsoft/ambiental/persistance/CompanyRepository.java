@@ -42,13 +42,16 @@ public class CompanyRepository implements CompanyDTORepository {
 
     @Override
     public CompanyDTO save(CompanyDTO companyDTO) {
-        if (companyCrudRepository.findByName(companyDTO.getName()).isPresent()) {
-            return null;
-        }
         Company company = companyDTOMapper.toCompany(companyDTO);
         return companyDTOMapper.toCompanyDTO(companyCrudRepository.save(company));
     }
-
+    /*
+    @Override
+    public CompanyDTO update(CompanyDTO companyDTO) {
+        Company company = companyDTOMapper.toCompany(companyDTO);
+        return companyDTOMapper.toCompanyDTO(companyCrudRepository.save(company));
+    }
+    */
     @Override
     public void delete(long companyId) {
         companyCrudRepository.deleteById(companyId);

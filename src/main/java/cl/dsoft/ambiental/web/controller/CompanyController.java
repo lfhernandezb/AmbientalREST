@@ -56,6 +56,11 @@ public class CompanyController {
         return new ResponseEntity<>(companyDTOService.save(company), HttpStatus.CREATED);
     }
 
+    @PutMapping("/save")
+    public ResponseEntity<CompanyDTO> update(@RequestBody CompanyDTO company) {
+        return new ResponseEntity<>(companyDTOService.update(company), HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") long companyId) {
         if (companyDTOService.delete(companyId)) {
