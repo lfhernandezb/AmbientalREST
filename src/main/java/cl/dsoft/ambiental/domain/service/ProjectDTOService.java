@@ -23,8 +23,8 @@ public class ProjectDTOService {
         return projectRepository.getProject(projectId);
     }
 
-    public Optional<List<ProjectDTO>> getByDescription(String description) {
-        return projectRepository.findByDescription(description);
+    public Optional<List<ProjectDTO>> getByDescriptionAndCompantId(String description, long companyId) {
+        return projectRepository.findByDescriptionAndIdCompany(description, companyId);
     }
 
     public Optional<List<ProjectDTO>> getByCompanyId(long companyId) {
@@ -33,7 +33,7 @@ public class ProjectDTOService {
 
     public ProjectDTO save(ProjectDTO project) {
         // valido que ya no exista una compania con el mismo nombre
-        if (projectRepository.getAllByDescription(project.getDescription()).isPresent()) {
+        if (projectRepository.findByDescriptionAndIdCompany(project.getDescription(), project.getCompanyId()).isPresent()) {
             return null;
         }
         return projectRepository.save(project);

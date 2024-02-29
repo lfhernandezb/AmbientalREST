@@ -1,0 +1,6 @@
+http://localhost:8080/api/companies/param?name=Company%201
+http://localhost:8080/api/companies/all
+http://localhost:8080/api/companies/3
+http://localhost:8080/api/companies/param?name=Company%201
+http://localhost:8080/api/companies/param?name=Company%201
+http://localhost:8080/api/companies/param?name=Company%201

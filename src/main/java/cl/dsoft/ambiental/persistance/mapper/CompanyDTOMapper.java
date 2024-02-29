@@ -14,7 +14,7 @@ public interface CompanyDTOMapper {
     @Mappings({
             @Mapping(source = "id", target = "companyId"),
             @Mapping(source = "name", target = "name"),
-            @Mapping(source = "projects", target = "projects")
+            //@Mapping(source = "projects", target = "projects")
     })
     CompanyDTO toCompanyDTO(Company company);
     List<CompanyDTO> toCompanyDTOs(List<Company> companies);

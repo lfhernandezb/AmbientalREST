@@ -19,10 +19,10 @@ public interface FindingMapper {
             @Mapping(source = "description", target = "description"),
             @Mapping(source = "comment", target = "comment"),
             @Mapping(source = "idFindingState", target = "findingStateId"),
-            @Mapping(source = "findingState", target = "findingState"),
+            //@Mapping(source = "findingState", target = "findingState"),
             @Mapping(source = "image", target = "image"),
             @Mapping(source = "idProject", target = "projectId"),
-            @Mapping(source = "project", target = "project")
+            //@Mapping(source = "project", target = "project")
     })
     FindingDTO toFindingDTO(Finding finding);
     List<FindingDTO> toFindingDTOs(List<Finding> finding);

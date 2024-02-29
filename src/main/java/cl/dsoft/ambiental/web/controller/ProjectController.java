@@ -35,16 +35,17 @@ public class ProjectController {
     }
 
     @GetMapping("/company/{companyId}")
-    public ResponseEntity<List<ProjectDTO>> getByCategory(@PathVariable("companyId") int companyId) {
+    public ResponseEntity<List<ProjectDTO>> getByCompany(@PathVariable("companyId") int companyId) {
         return projectDTOService.getByCompanyId(companyId)
                 .map(projects -> new ResponseEntity<>(projects, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/param")
-    public ResponseEntity<List<ProjectDTO>> getProjectByDescription(
-            @RequestParam("description") String description) {
-        return projectDTOService.getByDescription(description)
+    public ResponseEntity<List<ProjectDTO>> getProjectByDescriptionAndCompanyId(
+            @RequestParam("description") String description,
+            @RequestParam("companyId") long companyId) {
+        return projectDTOService.getByDescriptionAndCompantId(description, companyId)
                 .map(projects -> new ResponseEntity<>(projects, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 

@@ -29,7 +29,7 @@ public class CompanyDTOService {
 
     public CompanyDTO save(CompanyDTO company) {
         // valido que ya no exista una compania con el mismo nombre
-        if (companyRepository.getAllByName(company.getName()).isPresent()) {
+        if (companyRepository.getAllByName(company.getName()).isPresent() && company.getCompanyId() < 1) {
             return null;
         }
         return companyRepository.save(company);

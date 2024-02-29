@@ -18,7 +18,7 @@ public interface ProjectDTOMapper {
             @Mapping(source = "description", target = "description"),
             @Mapping(source = "address", target = "address"),
             @Mapping(source = "idCompany", target = "companyId"),
-            @Mapping(source = "company", target = "company"),
+            //@Mapping(source = "company", target = "company"),
     })
     ProjectDTO toProjectDTO(Project project);
     List<ProjectDTO> toProjectDTOs(List<Project> projects);

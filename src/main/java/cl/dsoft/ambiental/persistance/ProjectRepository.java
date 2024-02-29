@@ -28,8 +28,8 @@ public class ProjectRepository implements ProjectDTORepository {
     }
 
     @Override
-    public Optional<List<ProjectDTO>> findByDescription(String description) {
-        Optional<List<Project>> companies = projectCrudRepository.findByDescription(description);
+    public Optional<List<ProjectDTO>> findByDescriptionAndIdCompany(String description, long idCompany) {
+        Optional<List<Project>> companies = projectCrudRepository.findByDescriptionAndIdCompany(description, idCompany);
         return companies.map((comps) -> projectDTOMapper.toProjectDTOs(comps));
     }
 
@@ -73,11 +73,11 @@ public class ProjectRepository implements ProjectDTORepository {
     public Project create(Project project) {
         return projectCrudRepository.save(project);
     }
-
+    /*
     //@Query(value = "SELECT * FROM projects p WHERE p.description = :description",
     //        nativeQuery = true)
     public Optional<List<Project>> getAllByDescription(@Param("description") String description) {
         return projectCrudRepository.findByDescription(description);
     }
-
+    */
 }
