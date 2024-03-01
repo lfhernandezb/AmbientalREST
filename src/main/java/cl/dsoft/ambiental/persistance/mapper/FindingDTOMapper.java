@@ -1,9 +1,7 @@
 package cl.dsoft.ambiental.persistance.mapper;
 
 import cl.dsoft.ambiental.domain.dto.FindingDTO;
-import cl.dsoft.ambiental.domain.dto.ProjectDTO;
 import cl.dsoft.ambiental.persistance.entity.Finding;
-import cl.dsoft.ambiental.persistance.entity.Project;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,7 +10,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {FindingStateDTOMapper.class, ProjectDTOMapper.class})
-public interface FindingMapper {
+public interface FindingDTOMapper {
     @Mappings({
             @Mapping(source = "id", target = "findingId"),
             @Mapping(source = "identifier", target = "identifier"),

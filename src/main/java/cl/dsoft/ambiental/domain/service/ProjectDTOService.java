@@ -24,7 +24,7 @@ public class ProjectDTOService {
     }
 
     public Optional<List<ProjectDTO>> getByDescriptionAndCompantId(String description, long companyId) {
-        return projectRepository.findByDescriptionAndIdCompany(description, companyId);
+        return projectRepository.findByDescriptionAndCompanyId(description, companyId);
     }
 
     public Optional<List<ProjectDTO>> getByCompanyId(long companyId) {
@@ -33,7 +33,7 @@ public class ProjectDTOService {
 
     public ProjectDTO save(ProjectDTO project) {
         // valido que ya no exista una compania con el mismo nombre
-        if (projectRepository.findByDescriptionAndIdCompany(project.getDescription(), project.getCompanyId()).isPresent()) {
+        if (projectRepository.findByDescriptionAndCompanyId(project.getDescription(), project.getCompanyId()).isPresent()) {
             return null;
         }
         return projectRepository.save(project);
@@ -41,7 +41,7 @@ public class ProjectDTOService {
 
     public ProjectDTO update(ProjectDTO project) {
         // valido que exista el proyecto
-        Optional<ProjectDTO> projectDTO = projectRepository.getProject(project.getCompanyId());
+        Optional<ProjectDTO> projectDTO = projectRepository.getProject(project.getProjectId());
         if (projectDTO.isPresent()) {
             projectDTO.map((proj) -> {
                 proj.setDescription(project.getDescription());

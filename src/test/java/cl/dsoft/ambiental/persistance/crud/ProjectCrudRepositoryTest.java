@@ -1,6 +1,5 @@
 package cl.dsoft.ambiental.persistance.crud;
 
-import cl.dsoft.ambiental.domain.service.ProjectDTOService;
 import cl.dsoft.ambiental.persistance.entity.Project;
 import org.junit.After;
 import org.junit.Before;

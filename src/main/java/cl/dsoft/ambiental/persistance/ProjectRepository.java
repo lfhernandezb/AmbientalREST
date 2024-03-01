@@ -28,8 +28,8 @@ public class ProjectRepository implements ProjectDTORepository {
     }
 
     @Override
-    public Optional<List<ProjectDTO>> findByDescriptionAndIdCompany(String description, long idCompany) {
-        Optional<List<Project>> companies = projectCrudRepository.findByDescriptionAndIdCompany(description, idCompany);
+    public Optional<List<ProjectDTO>> findByDescriptionAndCompanyId(String description, long companyId) {
+        Optional<List<Project>> companies = projectCrudRepository.findByDescriptionAndIdCompany(description, companyId);
         return companies.map((comps) -> projectDTOMapper.toProjectDTOs(comps));
     }
 
