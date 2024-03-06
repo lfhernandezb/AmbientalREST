@@ -1,11 +1,9 @@
 package cl.dsoft.ambiental.persistance;
 
 import cl.dsoft.ambiental.domain.dto.FindingDTO;
-import cl.dsoft.ambiental.domain.dto.ProjectDTO;
 import cl.dsoft.ambiental.domain.repository.FindingDTORepository;
 import cl.dsoft.ambiental.persistance.crud.FindingCrudRepository;
 import cl.dsoft.ambiental.persistance.entity.Finding;
-import cl.dsoft.ambiental.persistance.entity.Project;
 import cl.dsoft.ambiental.persistance.mapper.FindingDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,13 +39,23 @@ public class FindingRepository implements FindingDTORepository {
         );
     }
 
+    @Override
+    public Optional<List<FindingDTO>> findByDescriptionAndProjectId(String description, long projectId) {
+        Optional<List<Finding>> companies = findingCrudRepository.findByDescriptionContainingIgnoreCaseAndIdProject(description, projectId);
+        return companies.map((finds) -> findingDTOMapper.toFindingDTOs(finds));
+    }
+
+    @Override
+    public Optional<List<FindingDTO>> findByDescriptionContainingIgnoreCaseAndProjectId(String description, long projectId) {
+        Optional<List<Finding>> companies = findingCrudRepository.findByDescriptionContainingIgnoreCaseAndIdProject(description, projectId);
+        return companies.map((finds) -> findingDTOMapper.toFindingDTOs(finds));
+    }
 
     @Override
     public Optional<List<FindingDTO>> findByIdentifierAndProjectId(String description, long projectId) {
         Optional<List<Finding>> companies = findingCrudRepository.findByIdentifierAndIdProject(description, projectId);
         return companies.map((finds) -> findingDTOMapper.toFindingDTOs(finds));
     }
-
 
     @Override
     public FindingDTO save(FindingDTO findingDTO) {

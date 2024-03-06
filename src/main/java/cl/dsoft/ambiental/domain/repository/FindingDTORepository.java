@@ -9,7 +9,11 @@ public interface FindingDTORepository {
     List<FindingDTO> getAll();
     Optional<List<FindingDTO>> findByProjectId(long projectId);
     Optional<FindingDTO> getFinding(long findingId);
-    public Optional<List<FindingDTO>> findByIdentifierAndProjectId(String description, long projectId);
+    public Optional<List<FindingDTO>> findByDescriptionAndProjectId(String description, long projectId);
+    public Optional<List<FindingDTO>> findByDescriptionContainingIgnoreCaseAndProjectId(String description, long projectId);
+
+    Optional<List<FindingDTO>> findByIdentifierAndProjectId(String description, long projectId);
+
     FindingDTO save(FindingDTO finding);
     void delete(long findingId);
 }

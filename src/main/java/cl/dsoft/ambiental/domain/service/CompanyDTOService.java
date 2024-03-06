@@ -16,15 +16,22 @@ public class CompanyDTOService {
     private CompanyRepository companyRepository;
 
     public List<CompanyDTO> getAll() {
+
         return companyRepository.getAll();
     }
 
     public Optional<CompanyDTO> getCompany(long companyId) {
+
         return companyRepository.getCompany(companyId);
     }
 
     public Optional<List<CompanyDTO>> getByName(String name) {
+
         return companyRepository.findByName(name);
+    }
+
+    public Optional<List<CompanyDTO>> getByNameContaining(String name) {
+        return companyRepository.findByNameContainingIgnoreCase(name);
     }
 
     public CompanyDTO save(CompanyDTO company) {

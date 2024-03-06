@@ -26,6 +26,18 @@ public class FindingDTOService {
         return findingRepository.findByProjectId(projectId);
     }
 
+    public Optional<List<FindingDTO>> getByIdentifierAndProjectId(String description, long projectId) {
+        return findingRepository.findByIdentifierAndProjectId(description, projectId);
+    }
+
+    public Optional<List<FindingDTO>> getByDescriptionAndProjectId(String description, long projectId) {
+        return findingRepository.findByDescriptionAndProjectId(description, projectId);
+    }
+
+    public Optional<List<FindingDTO>> getByDescriptionContainingIgnoreCaseAndProjectId(String description, long projectId) {
+        return findingRepository.findByDescriptionContainingIgnoreCaseAndProjectId(description, projectId);
+    }
+
     public FindingDTO save(FindingDTO finding) {
         // valido que ya no exista un hallazgo con el mismo identifier e idProject
         if (findingRepository.findByIdentifierAndProjectId(finding.getIdentifier(), finding.getProjectId()).isPresent()) {

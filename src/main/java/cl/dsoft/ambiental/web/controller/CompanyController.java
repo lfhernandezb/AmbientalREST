@@ -43,10 +43,13 @@ public class CompanyController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     */
+    /*
+    /companies/param?name={name}
+     */
     @GetMapping("/param")
     public ResponseEntity<List<CompanyDTO>> getCompanyByName(
             @RequestParam("name") String name) {
-        return companyDTOService.getByName(name)
+        return companyDTOService.getByNameContaining(name)
                 .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 

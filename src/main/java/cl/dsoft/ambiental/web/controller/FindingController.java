@@ -43,18 +43,25 @@ public class FindingController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /*
     @GetMapping("/param")
-    public ResponseEntity<List<FindingDTO>> getFindingByDescriptionAndCompanyId(
+    public ResponseEntity<List<FindingDTO>> getFindingByDescriptionAndProjectId(
             @RequestParam("description") String description,
-            @RequestParam("companyId") long companyId) {
-        return findingDTOService.getByDescriptionAndCompantId(description, companyId)
+            @RequestParam("projectId") long projectId) {
+        return findingDTOService.getByDescriptionAndProjectId(description, projectId)
                 .map(findings -> new ResponseEntity<>(findings, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
     }
-    */
 
+    @GetMapping("/special")
+    public ResponseEntity<List<FindingDTO>> getFindingByDescriptionContainingIgnoreCaseAndProjectId(
+            @RequestParam("description") String description,
+            @RequestParam("projectId") long projectId) {
+        return findingDTOService.getByDescriptionContainingIgnoreCaseAndProjectId(description, projectId)
+                .map(findings -> new ResponseEntity<>(findings, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+    }
     @PostMapping("/save")
     public ResponseEntity<FindingDTO> save(@RequestBody FindingDTO finding) {
         return new ResponseEntity<>(findingDTOService.save(finding), HttpStatus.CREATED);

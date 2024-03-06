@@ -45,7 +45,7 @@ public class ProjectController {
     public ResponseEntity<List<ProjectDTO>> getProjectByDescriptionAndCompanyId(
             @RequestParam("description") String description,
             @RequestParam("companyId") long companyId) {
-        return projectDTOService.getByDescriptionAndCompantId(description, companyId)
+        return projectDTOService.getByDescriptionContainingIgnoreCaseAndCompanyId(description, companyId)
                 .map(projects -> new ResponseEntity<>(projects, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 

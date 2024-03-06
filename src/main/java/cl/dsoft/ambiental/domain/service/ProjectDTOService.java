@@ -23,8 +23,12 @@ public class ProjectDTOService {
         return projectRepository.getProject(projectId);
     }
 
-    public Optional<List<ProjectDTO>> getByDescriptionAndCompantId(String description, long companyId) {
+    public Optional<List<ProjectDTO>> getByDescriptionAndCompanyId(String description, long companyId) {
         return projectRepository.findByDescriptionAndCompanyId(description, companyId);
+    }
+
+    public Optional<List<ProjectDTO>> getByDescriptionContainingIgnoreCaseAndCompanyId(String description, long companyId) {
+        return projectRepository.findByDescriptionContainingIgnoreCaseAndCompanyId(description, companyId);
     }
 
     public Optional<List<ProjectDTO>> getByCompanyId(long companyId) {

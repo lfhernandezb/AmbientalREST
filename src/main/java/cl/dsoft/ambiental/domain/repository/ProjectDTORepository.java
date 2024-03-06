@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface ProjectDTORepository {
     List<ProjectDTO> getAll();
     Optional<List<ProjectDTO>> findByDescriptionAndCompanyId(String description, long idCompany);
+    Optional<List<ProjectDTO>> findByDescriptionContainingIgnoreCaseAndCompanyId(String description, long idCompany);
     Optional<List<ProjectDTO>> findByCompanyId(long projectId);
     Optional<ProjectDTO> getProject(long projectId);
     ProjectDTO save(ProjectDTO project);

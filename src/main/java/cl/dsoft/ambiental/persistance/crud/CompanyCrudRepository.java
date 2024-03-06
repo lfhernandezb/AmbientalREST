@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface CompanyCrudRepository extends CrudRepository<Company, Long> {
     Optional<List<Company>> findByName(String name);
+    Optional<List<Company>> findByNameContainingIgnoreCase(String name);
 }

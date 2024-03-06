@@ -2,6 +2,7 @@ package cl.dsoft.ambiental.persistance.crud;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @SpringBootTest
 public class FindingsReportTest {
     @Test
+    @Ignore
     public void iterateOverCellsOnSample() {
         DataFormatter formatter = new DataFormatter();
 

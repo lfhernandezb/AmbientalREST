@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface FindingCrudRepository extends CrudRepository<Finding, Long> {
     Optional<List<Finding>> findByIdProject(long idProject);
-    Optional<List<Finding>> findByIdentifierAndIdProject(String identifier, long idProject);
+    Optional<List<Finding>> findByDescriptionContainingIgnoreCaseAndIdProject(String description, long idProject);
+    Optional<List<Finding>> findByIdentifierAndIdProject(String description, long idProject);
 
 }

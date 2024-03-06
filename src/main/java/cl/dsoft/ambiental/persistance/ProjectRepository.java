@@ -3,11 +3,9 @@ package cl.dsoft.ambiental.persistance;
 import cl.dsoft.ambiental.domain.dto.ProjectDTO;
 import cl.dsoft.ambiental.domain.repository.ProjectDTORepository;
 import cl.dsoft.ambiental.persistance.crud.ProjectCrudRepository;
-import cl.dsoft.ambiental.persistance.crud.ProjectCrudRepository;
 import cl.dsoft.ambiental.persistance.entity.Project;
 import cl.dsoft.ambiental.persistance.mapper.ProjectDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,6 +28,12 @@ public class ProjectRepository implements ProjectDTORepository {
     @Override
     public Optional<List<ProjectDTO>> findByDescriptionAndCompanyId(String description, long companyId) {
         Optional<List<Project>> companies = projectCrudRepository.findByDescriptionAndIdCompany(description, companyId);
+        return companies.map((comps) -> projectDTOMapper.toProjectDTOs(comps));
+    }
+
+    @Override
+    public Optional<List<ProjectDTO>> findByDescriptionContainingIgnoreCaseAndCompanyId(String description, long companyId) {
+        Optional<List<Project>> companies = projectCrudRepository.findByDescriptionContainingIgnoreCaseAndIdCompany(description, companyId);
         return companies.map((comps) -> projectDTOMapper.toProjectDTOs(comps));
     }
 

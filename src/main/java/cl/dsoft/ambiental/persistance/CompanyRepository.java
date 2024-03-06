@@ -34,6 +34,12 @@ public class CompanyRepository implements CompanyDTORepository {
     }
 
     @Override
+    public Optional<List<CompanyDTO>> findByNameContainingIgnoreCase(String name) {
+        Optional<List<Company>> companies = companyCrudRepository.findByNameContainingIgnoreCase(name);
+        return companies.map((comps) -> companyDTOMapper.toCompanyDTOs(comps));
+    }
+
+    @Override
     public Optional<CompanyDTO> getCompany(long companyId) {
         return companyCrudRepository.findById(companyId).map((company) ->
             companyDTOMapper.toCompanyDTO(company)
