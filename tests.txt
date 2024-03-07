@@ -10,3 +10,9 @@ curl -i --user user:password http://localhost:8080/api/login
 
 curl -i http://localhost:8080/api/projects/param\?description=p&companyId=1
 curl -i http://localhost:8080/api/projects/1
+
+curl -i http://localhost:8080/api/findings/3
+
+curl -i http://localhost:8080/api/findings/param\?identifier=A\&projectId=1
+
+curl -i http://localhost:8080/api/findings/special\?description=\&projectId=1

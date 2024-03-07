@@ -59,7 +59,7 @@ CREATE TABLE public.findings (
     description character varying(8192) NOT NULL,
     comment character varying(8192) NOT NULL,
     id_finding_state integer NOT NULL,
-    image character varying(16384),
+    image character varying(1048576),
     id_project bigint,
     date timestamp with time zone NOT NULL
 );
@@ -195,8 +195,11 @@ COPY public.companies (id_company, name) FROM stdin;
 --
 
 COPY public.finding_states (id_finding_state, description) FROM stdin;
-1	Pending
+1	Pendiente
 2	Ok
+3   Solicitado
+4   En revisión
+5   No aplica
 \.
 
 

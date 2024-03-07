@@ -40,11 +40,10 @@ public class Finding {
     @Column(name = "id_finding_state")
     private int idFindingState;
 
-    /*
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_finding_state", insertable = false, updatable = false)
     private FindingState findingState;
-    */
+
     private String image;
     @Column(name = "id_project")
     private long idProject;

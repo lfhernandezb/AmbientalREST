@@ -45,9 +45,9 @@ public class FindingController {
 
     @GetMapping("/param")
     public ResponseEntity<List<FindingDTO>> getFindingByDescriptionAndProjectId(
-            @RequestParam("description") String description,
+            @RequestParam("identifier") String identifier,
             @RequestParam("projectId") long projectId) {
-        return findingDTOService.getByDescriptionAndProjectId(description, projectId)
+        return findingDTOService.getByIdentifierAndProjectId(identifier, projectId)
                 .map(findings -> new ResponseEntity<>(findings, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
